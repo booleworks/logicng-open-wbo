@@ -82,8 +82,8 @@ lib$(LIB)_standard.a lib$(LIB)_profile.a lib$(LIB)_release.a lib$(LIB)_debug.a:
 
 ## Library Soft Link rule:
 libs libp libd libr:
-	@echo "Making Soft Link: $^ -> lib$(LIB).a"
-	@ln -sf $^ lib$(LIB).a
+# @echo "Making Soft Link: $^ -> lib$(LIB).a"
+# @ln -sf $^ lib$(LIB).a
 
 ## Clean rule
 allclean: clean
