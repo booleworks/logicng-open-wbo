@@ -1,4 +1,15 @@
 # Open-WBO MaxSAT Solver
+
+## LogicNG Fork
+
+This fork is a modified version, designed to be included as library in
+[logicng-rs](https://github.com/booleworks/logicng-rs).  
+
+- We have simplified the program structure.
+- Removed Code unused by LogicNG.
+- Removed build process for CLI. (Only a build as library is possible).
+- Improved build-scripts to support more platforms. 
+
 ## Version 2.1 - September 2018
 
 Open-WBO is an extensible and modular open-source MaxSAT Solver.
