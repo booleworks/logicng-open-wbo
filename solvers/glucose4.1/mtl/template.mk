@@ -5,12 +5,11 @@
 ##        "make d"  for a debug version (no optimizations).
 ##        "make"    for the standard version (optimized, but with debug information and assertions active)
 
-PWD        = $(shell pwd)
-EXEC      ?= $(notdir $(PWD))
+EXEC      ?= $(notdir $(CURDIR))
 
-CSRCS      = $(wildcard $(PWD)/*.cc) 
+CSRCS      = $(wildcard $(CURDIR)/*.cc) 
 DSRCS      = $(foreach dir, $(DEPDIR), $(filter-out $(MROOT)/$(dir)/Main.cc, $(wildcard $(MROOT)/$(dir)/*.cc)))
-CHDRS      = $(wildcard $(PWD)/*.h)
+CHDRS      = $(wildcard $(PCURDIRWD)/*.h)
 COBJS      = $(CSRCS:.cc=.o) $(DSRCS:.cc=.o)
 
 PCOBJS     = $(addsuffix p,  $(COBJS))
@@ -97,7 +96,7 @@ clean:
 depend.mk: $(CSRCS) $(CHDRS)
 	@echo Making dependencies
 	@$(CXX) $(CFLAGS) -I$(MROOT) \
-	   $(CSRCS) -MM | sed 's|\(.*\):|$(PWD)/\1 $(PWD)/\1r $(PWD)/\1d $(PWD)/\1p:|' > depend.mk
+	   $(CSRCS) -MM | sed 's|\(.*\):|$(CURDIR)/\1 $(CURDIR)/\1r $(CURDIR)/\1d $(CURDIR)/\1p:|' > depend.mk
 	@for dir in $(DEPDIR); do \
 	      if [ -r $(MROOT)/$${dir}/depend.mk ]; then \
 		  echo Depends on: $${dir}; \
